@@ -5,17 +5,41 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Michał Floras — Portfolio Graficzne</title>
+
+  <!-- SEO / Open Graph -->
+  <meta name="description" content="Portfolio graficzne Michała Florasa — logotypy, okładki, materiały drukowane, grafiki promocyjne. Student AGH, członek Centrum Mediów.">
+  <meta name="author" content="Michał Floras">
+  <meta name="theme-color" content="#0d0d0d">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pl_PL">
+  <meta property="og:title" content="Michał Floras — Portfolio Graficzne">
+  <meta property="og:description" content="Logotypy, okładki, materiały drukowane i grafiki promocyjne.">
+  <meta property="og:image" content="okladka.png">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon (inline SVG — żadnych dodatkowych plików) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230d0d0d'/%3E%3Ctext x='50%25' y='52%25' text-anchor='middle' dominant-baseline='middle' font-family='sans-serif' font-weight='700' font-size='28' fill='%23e8b85d'%3EMF%3C/text%3E%3C/svg%3E">
+
+  <!-- Fonts: pełne preconnect (fonts.gstatic.com z crossorigin) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap">
+
+  <!-- Preload kluczowego tła hero, żeby LCP było szybsze -->
+  <link rel="preload" as="image" href="czarno-biale-tlo.jpg" fetchpriority="high">
+
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+  <!-- Skip link (pojawia się przy fokusie z klawiatury) -->
+  <a class="skip-link" href="#hero">Przejdź do treści</a>
+
   <!-- NAV -->
-  <nav class="nav" id="nav">
+  <nav class="nav" id="nav" aria-label="Nawigacja główna">
     <div class="nav__inner">
-      <a href="#hero" class="nav__logo">MF</a>
-      <button class="nav__burger" id="burger" aria-label="Menu">
+      <a href="#hero" class="nav__logo" aria-label="Strona główna — Michał Floras">MF</a>
+      <button class="nav__burger" id="burger" aria-label="Otwórz menu" aria-expanded="false" aria-controls="navLinks">
         <span></span><span></span><span></span>
       </button>
       <ul class="nav__links" id="navLinks">
@@ -27,10 +51,11 @@
   </nav>
 
   <!-- HERO -->
+  <main id="main">
   <section class="hero" id="hero">
-    <div class="hero__bg"></div>
+    <div class="hero__bg" aria-hidden="true"></div>
     <div class="hero__content">
-      <p class="hero__eyebrow reveal">Projektant Graficzny &amp; Multimedialist</p>
+      <p class="hero__eyebrow reveal">Projektant Graficzny &amp; Multimedialista</p>
       <h1 class="hero__title reveal">
         <span>Michał</span><br>
         <span class="hero__title--accent">Floras</span>
@@ -38,7 +63,7 @@
       <p class="hero__sub reveal">Student AGH · Centrum Mediów · Adobe Suite</p>
       <a href="#portfolio" class="btn reveal">Zobacz prace</a>
     </div>
-    <div class="hero__scroll">
+    <div class="hero__scroll" aria-hidden="true">
       <span></span>
     </div>
   </section>
@@ -51,80 +76,58 @@
         <p class="section__desc">Wybrane projekty graficzne — logotypy, okładki, materiały drukowane i wizualizacje.</p>
       </div>
 
-      <div class="filters reveal">
-        <button class="filter-btn active" data-filter="all">Wszystkie</button>
-        <button class="filter-btn" data-filter="logo">Logotypy</button>
-        <button class="filter-btn" data-filter="print">Druk &amp; Media</button>
-        <button class="filter-btn" data-filter="other">Inne</button>
+      <div class="filters reveal" role="group" aria-label="Filtry kategorii portfolio">
+        <button class="filter-btn active" data-filter="all" type="button" aria-pressed="true">Wszystkie</button>
+        <button class="filter-btn" data-filter="logo" type="button" aria-pressed="false">Logotypy</button>
+        <button class="filter-btn" data-filter="print" type="button" aria-pressed="false">Druk &amp; Media</button>
+        <button class="filter-btn" data-filter="other" type="button" aria-pressed="false">Inne</button>
       </div>
 
       <div class="grid" id="grid">
-        <div class="grid__item reveal" data-cat="logo">
-          <img src="erasmus1.png" alt="Logo Erasmus+ Culture Shadow Project" loading="lazy">
-          <div class="grid__overlay">
-            <span class="grid__label">Logo Erasmus+ Culture Shadow</span>
-          </div>
-        </div>
-        <div class="grid__item reveal" data-cat="logo">
-          <img src="l2.jpg" alt="Logo Radio Copernicus" loading="lazy">
-          <div class="grid__overlay">
-            <span class="grid__label">Logo Radio Copernicus</span>
-          </div>
-        </div>
-        <div class="grid__item reveal" data-cat="logo">
-          <img src="l1.png" alt="Logo projektu walki z depresją" loading="lazy">
-          <div class="grid__overlay">
-            <span class="grid__label">Logo projektu — walka z depresją</span>
-          </div>
-        </div>
-        <div class="grid__item reveal" data-cat="logo">
-          <img src="logo jach 1.jpeg" alt="Logo LO im. Mikołaja Kopernika" loading="lazy">
-          <div class="grid__overlay">
-            <span class="grid__label">Logo LO im. M. Kopernika</span>
-          </div>
-        </div>
-        <div class="grid__item reveal" data-cat="print">
-          <img src="plyta przod wnetrze.png" alt="Okładka płyty CD" loading="lazy">
-          <div class="grid__overlay">
-            <span class="grid__label">Okładka płyty CD</span>
-          </div>
-        </div>
-        <div class="grid__item reveal" data-cat="other">
-          <img src="sgi1.png" alt="Grafika SGI Lesser 2021/2022" loading="lazy">
-          <div class="grid__overlay">
-            <span class="grid__label">SGI Lesser 2021/2022</span>
-          </div>
-        </div>
-        <div class="grid__item reveal" data-cat="other">
-          <img src="web.png" alt="Grafika Webmastering 2021/2022" loading="lazy">
-          <div class="grid__overlay">
-            <span class="grid__label">Webmastering 2021/2022</span>
-          </div>
-        </div>
-        <div class="grid__item reveal" data-cat="logo">
-          <img src="logo_2.jpg" alt="Logo P1B" loading="lazy">
-          <div class="grid__overlay">
-            <span class="grid__label">Logo P1B</span>
-          </div>
-        </div>
-        <div class="grid__item reveal" data-cat="print">
-          <img src="okladka.png" alt="Okładka książki Erasmus+" loading="lazy">
-          <div class="grid__overlay">
-            <span class="grid__label">Okładka książki — Erasmus+</span>
-          </div>
-        </div>
-        <div class="grid__item reveal" data-cat="print">
-          <img src="plakat_1.png" alt="Album Spotify Glass — szkło akrylowe" loading="lazy">
-          <div class="grid__overlay">
-            <span class="grid__label">Spotify Glass — album akrylowy</span>
-          </div>
-        </div>
-        <div class="grid__item reveal" data-cat="other">
-          <img src="karty1.png" alt="Autorskie karty Jenga" loading="lazy">
-          <div class="grid__overlay">
-            <span class="grid__label">Autorskie karty Jenga</span>
-          </div>
-        </div>
+        <button class="grid__item reveal" data-cat="logo" type="button" aria-label="Otwórz: Logo Erasmus+ Culture Shadow">
+          <img src="erasmus1.png" alt="Logo Erasmus+ Culture Shadow Project" loading="lazy" decoding="async" width="800" height="600">
+          <span class="grid__overlay"><span class="grid__label">Logo Erasmus+ Culture Shadow</span></span>
+        </button>
+        <button class="grid__item reveal" data-cat="logo" type="button" aria-label="Otwórz: Logo Radio Copernicus">
+          <img src="l2.jpg" alt="Logo Radio Copernicus" loading="lazy" decoding="async" width="800" height="600">
+          <span class="grid__overlay"><span class="grid__label">Logo Radio Copernicus</span></span>
+        </button>
+        <button class="grid__item reveal" data-cat="logo" type="button" aria-label="Otwórz: Logo projektu — walka z depresją">
+          <img src="l1.png" alt="Logo projektu walki z depresją" loading="lazy" decoding="async" width="800" height="600">
+          <span class="grid__overlay"><span class="grid__label">Logo projektu — walka z depresją</span></span>
+        </button>
+        <button class="grid__item reveal" data-cat="logo" type="button" aria-label="Otwórz: Logo LO im. M. Kopernika">
+          <img src="logo jach 1.jpeg" alt="Logo LO im. Mikołaja Kopernika" loading="lazy" decoding="async" width="800" height="600">
+          <span class="grid__overlay"><span class="grid__label">Logo LO im. M. Kopernika</span></span>
+        </button>
+        <button class="grid__item reveal" data-cat="print" type="button" aria-label="Otwórz: Okładka płyty CD">
+          <img src="plyta przod wnetrze.png" alt="Okładka płyty CD" loading="lazy" decoding="async" width="800" height="600">
+          <span class="grid__overlay"><span class="grid__label">Okładka płyty CD</span></span>
+        </button>
+        <button class="grid__item reveal" data-cat="other" type="button" aria-label="Otwórz: SGI Lesser 2021/2022">
+          <img src="sgi1.png" alt="Grafika SGI Lesser 2021/2022" loading="lazy" decoding="async" width="800" height="600">
+          <span class="grid__overlay"><span class="grid__label">SGI Lesser 2021/2022</span></span>
+        </button>
+        <button class="grid__item reveal" data-cat="other" type="button" aria-label="Otwórz: Webmastering 2021/2022">
+          <img src="web.png" alt="Grafika Webmastering 2021/2022" loading="lazy" decoding="async" width="800" height="600">
+          <span class="grid__overlay"><span class="grid__label">Webmastering 2021/2022</span></span>
+        </button>
+        <button class="grid__item reveal" data-cat="logo" type="button" aria-label="Otwórz: Logo P1B">
+          <img src="logo_2.jpg" alt="Logo P1B" loading="lazy" decoding="async" width="800" height="600">
+          <span class="grid__overlay"><span class="grid__label">Logo P1B</span></span>
+        </button>
+        <button class="grid__item reveal" data-cat="print" type="button" aria-label="Otwórz: Okładka książki — Erasmus+">
+          <img src="okladka.png" alt="Okładka książki Erasmus+" loading="lazy" decoding="async" width="800" height="600">
+          <span class="grid__overlay"><span class="grid__label">Okładka książki — Erasmus+</span></span>
+        </button>
+        <button class="grid__item reveal" data-cat="print" type="button" aria-label="Otwórz: Spotify Glass — album akrylowy">
+          <img src="plakat_1.png" alt="Album Spotify Glass — szkło akrylowe" loading="lazy" decoding="async" width="800" height="600">
+          <span class="grid__overlay"><span class="grid__label">Spotify Glass — album akrylowy</span></span>
+        </button>
+        <button class="grid__item reveal" data-cat="other" type="button" aria-label="Otwórz: Autorskie karty Jenga">
+          <img src="karty1.png" alt="Autorskie karty Jenga" loading="lazy" decoding="async" width="800" height="600">
+          <span class="grid__overlay"><span class="grid__label">Autorskie karty Jenga</span></span>
+        </button>
       </div>
     </div>
   </section>
@@ -165,7 +168,7 @@
         <div class="about__right reveal">
           <div class="timeline">
             <div class="timeline__item">
-              <div class="timeline__dot"></div>
+              <div class="timeline__dot" aria-hidden="true"></div>
               <div class="timeline__body">
                 <span class="timeline__date">2017 – 2022</span>
                 <h4 class="timeline__role">Akustyk (staż)</h4>
@@ -174,16 +177,16 @@
               </div>
             </div>
             <div class="timeline__item">
-              <div class="timeline__dot"></div>
+              <div class="timeline__dot" aria-hidden="true"></div>
               <div class="timeline__body">
                 <span class="timeline__date">2019 – 2022</span>
                 <h4 class="timeline__role">Webmaster &amp; Grafik</h4>
                 <p class="timeline__place">LO im. M. Kopernika, Tarnobrzeg</p>
-                <p class="timeline__desc">Projekt i udoskonalanie strony szkoły, logo Radia Copernicus, szablony graficzne, logo gazetki "Lesser".</p>
+                <p class="timeline__desc">Projekt i udoskonalanie strony szkoły, logo Radia Copernicus, szablony graficzne, logo gazetki „Lesser".</p>
               </div>
             </div>
             <div class="timeline__item">
-              <div class="timeline__dot"></div>
+              <div class="timeline__dot" aria-hidden="true"></div>
               <div class="timeline__body">
                 <span class="timeline__date">2022 – teraz</span>
                 <h4 class="timeline__role">Członek Centrum Mediów</h4>
@@ -196,11 +199,11 @@
           <div class="references">
             <h3 class="about__subtitle">Referencje</h3>
             <blockquote class="quote">
-              <p>"Zlecenia, które mu powierzaliśmy, były wykonane zawsze na czas. Otrzymywaliśmy atrakcyjne i zgodne z naszymi wskazówkami grafiki. Polecamy wszystkim, którzy szukają solidnego grafika."</p>
+              <p>„Zlecenia, które mu powierzaliśmy, były wykonane zawsze na czas. Otrzymywaliśmy atrakcyjne i zgodne z naszymi wskazówkami grafiki. Polecamy wszystkim, którzy szukają solidnego grafika."</p>
               <cite>— prof. Andrzej Lipiec, LO im. M. Kopernika</cite>
             </blockquote>
             <blockquote class="quote">
-              <p>"Przez 5 lat znacząco rozwinął swoje umiejętności z zakresu obróbki dźwięku. Współpraca z Michałem to była wielka przyjemność."</p>
+              <p>„Przez 5 lat znacząco rozwinął swoje umiejętności z zakresu obróbki dźwięku. Współpraca z Michałem to była wielka przyjemność."</p>
               <cite>— Jan Rożak, Tarnobrzeski Dom Kultury</cite>
             </blockquote>
           </div>
@@ -220,18 +223,24 @@
         <div class="contact__grid">
           <div class="contact__info reveal">
             <div class="contact__item">
-              <span class="contact__icon">✉</span>
+              <span class="contact__icon" aria-hidden="true">✉</span>
               <a href="mailto:themiwelll@gmail.com">themiwelll@gmail.com</a>
             </div>
             <div class="contact__item">
-              <span class="contact__icon">☎</span>
+              <span class="contact__icon" aria-hidden="true">☎</span>
               <a href="tel:+48510971296">510 971 296</a>
             </div>
           </div>
-          <form class="contact__form reveal" id="contactForm">
+          <form class="contact__form reveal" id="contactForm" novalidate>
+            <!-- honeypot anty-spam (ukryte przed użytkownikiem) -->
+            <div class="form-honeypot" aria-hidden="true">
+              <label>Nie wypełniaj tego pola
+                <input type="text" name="website" tabindex="-1" autocomplete="off">
+              </label>
+            </div>
             <div class="form-group">
               <label for="name">Imię i nazwisko</label>
-              <input type="text" id="name" name="name" placeholder="Jan Kowalski" required>
+              <input type="text" id="name" name="name" placeholder="Jan Kowalski" required minlength="2">
             </div>
             <div class="form-group">
               <label for="email">E-mail</label>
@@ -239,27 +248,29 @@
             </div>
             <div class="form-group">
               <label for="message">Wiadomość</label>
-              <textarea id="message" name="message" rows="5" placeholder="Opisz projekt..." required></textarea>
+              <textarea id="message" name="message" rows="5" placeholder="Opisz projekt..." required minlength="10"></textarea>
             </div>
             <button type="submit" class="btn">Wyślij wiadomość</button>
+            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
           </form>
         </div>
       </div>
     </div>
   </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <p>© 2024 Michał Floras — Portfolio Graficzne</p>
+      <p>© <span id="year">2026</span> Michał Floras — Portfolio Graficzne</p>
     </div>
   </footer>
 
   <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox__close" id="lbClose">✕</button>
-    <button class="lightbox__prev" id="lbPrev">&#8249;</button>
-    <button class="lightbox__next" id="lbNext">&#8250;</button>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Podgląd projektu" aria-hidden="true">
+    <button class="lightbox__close" id="lbClose" aria-label="Zamknij podgląd">✕</button>
+    <button class="lightbox__prev" id="lbPrev" aria-label="Poprzedni projekt">&#8249;</button>
+    <button class="lightbox__next" id="lbNext" aria-label="Następny projekt">&#8250;</button>
     <div class="lightbox__wrap">
       <img src="" alt="" id="lbImg">
       <p class="lightbox__caption" id="lbCaption"></p>
@@ -267,56 +278,83 @@
   </div>
 
   <script>
-    // Nav scroll effect
-    const nav = document.getElementById('nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('nav--scrolled', window.scrollY > 50);
-    });
+    // Rok w stopce
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Burger menu
+    // Sprawdzenie czy użytkownik woli ograniczone animacje
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* =========================================
+       NAV — scroll efekt + burger
+       ========================================= */
+    const nav = document.getElementById('nav');
+    let scrollTicking = false;
+    window.addEventListener('scroll', () => {
+      if (!scrollTicking) {
+        requestAnimationFrame(() => {
+          nav.classList.toggle('nav--scrolled', window.scrollY > 50);
+          scrollTicking = false;
+        });
+        scrollTicking = true;
+      }
+    }, { passive: true });
+
     const burger = document.getElementById('burger');
     const navLinks = document.getElementById('navLinks');
-    burger.addEventListener('click', () => {
-      burger.classList.toggle('open');
-      navLinks.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        burger.classList.remove('open');
-        navLinks.classList.remove('open');
-      });
+    function setMenu(open) {
+      burger.classList.toggle('open', open);
+      navLinks.classList.toggle('open', open);
+      burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      burger.setAttribute('aria-label', open ? 'Zamknij menu' : 'Otwórz menu');
+      document.body.style.overflow = open ? 'hidden' : '';
+    }
+    burger.addEventListener('click', () => setMenu(!navLinks.classList.contains('open')));
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && navLinks.classList.contains('open')) setMenu(false); });
+    document.addEventListener('click', (e) => {
+      if (!navLinks.classList.contains('open')) return;
+      if (!navLinks.contains(e.target) && !burger.contains(e.target)) setMenu(false);
     });
 
-    // Scroll reveal
+    /* =========================================
+       SCROLL REVEAL
+       ========================================= */
     const reveals = document.querySelectorAll('.reveal');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('revealed');
-          observer.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.12 });
-    reveals.forEach(el => observer.observe(el));
+    if (prefersReducedMotion) {
+      reveals.forEach(el => el.classList.add('revealed'));
+    } else {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('revealed');
+            revealObserver.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      reveals.forEach(el => revealObserver.observe(el));
+    }
 
-    // Portfolio filter
+    /* =========================================
+       PORTFOLIO FILTER (display-based, bez dziur)
+       ========================================= */
     const filterBtns = document.querySelectorAll('.filter-btn');
     const gridItems = document.querySelectorAll('.grid__item');
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
+        filterBtns.forEach(b => { b.classList.remove('active'); b.setAttribute('aria-pressed', 'false'); });
         btn.classList.add('active');
+        btn.setAttribute('aria-pressed', 'true');
         const filter = btn.dataset.filter;
         gridItems.forEach(item => {
           const show = filter === 'all' || item.dataset.cat === filter;
-          item.style.opacity = show ? '1' : '0';
-          item.style.pointerEvents = show ? 'auto' : 'none';
-          item.style.transform = show ? 'scale(1)' : 'scale(0.92)';
+          item.classList.toggle('is-hidden', !show);
         });
       });
     });
 
-    // Lightbox
+    /* =========================================
+       LIGHTBOX — a11y, focus trap, preload
+       ========================================= */
     const lightbox = document.getElementById('lightbox');
     const lbImg = document.getElementById('lbImg');
     const lbCaption = document.getElementById('lbCaption');
@@ -325,13 +363,30 @@
     const lbNext = document.getElementById('lbNext');
     let currentIndex = 0;
     let visibleItems = [];
+    let lastFocused = null;
+
+    function getVisibleItems() {
+      return [...document.querySelectorAll('.grid__item')].filter(it => !it.classList.contains('is-hidden'));
+    }
+
+    function preloadNeighbors() {
+      const next = visibleItems[(currentIndex + 1) % visibleItems.length];
+      const prev = visibleItems[(currentIndex - 1 + visibleItems.length) % visibleItems.length];
+      [next, prev].forEach(it => {
+        const src = it && it.querySelector('img')?.src;
+        if (src) { const i = new Image(); i.src = src; }
+      });
+    }
 
     function openLightbox(index) {
-      visibleItems = [...document.querySelectorAll('.grid__item')].filter(i => i.style.opacity !== '0');
+      lastFocused = document.activeElement;
+      visibleItems = getVisibleItems();
       currentIndex = index;
       showSlide(currentIndex);
       lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
+      lbClose.focus();
     }
 
     function showSlide(n) {
@@ -343,18 +398,21 @@
       lbImg.src = img.src;
       lbImg.alt = img.alt;
       lbCaption.textContent = img.alt;
+      preloadNeighbors();
     }
 
     function closeLightbox() {
       lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
     }
 
-    gridItems.forEach((item, i) => {
+    gridItems.forEach((item) => {
       item.addEventListener('click', () => {
-        const allVisible = [...document.querySelectorAll('.grid__item')].filter(it => it.style.opacity !== '0');
-        const idx = allVisible.indexOf(item);
-        openLightbox(idx);
+        visibleItems = getVisibleItems();
+        const idx = visibleItems.indexOf(item);
+        if (idx !== -1) openLightbox(idx);
       });
     });
 
@@ -367,32 +425,70 @@
       if (e.key === 'Escape') closeLightbox();
       if (e.key === 'ArrowLeft') showSlide(currentIndex - 1);
       if (e.key === 'ArrowRight') showSlide(currentIndex + 1);
+      // Prosty focus-trap: zatrzymaj Tab w obrębie lightboxa
+      if (e.key === 'Tab') {
+        const focusables = [lbClose, lbPrev, lbNext];
+        const i = focusables.indexOf(document.activeElement);
+        e.preventDefault();
+        const next = e.shiftKey
+          ? focusables[(i - 1 + focusables.length) % focusables.length]
+          : focusables[(i + 1) % focusables.length];
+        next.focus();
+      }
     });
 
-    // Contact form
-    document.getElementById('contactForm').addEventListener('submit', (e) => {
+    // Swipe na mobile
+    let touchStartX = 0;
+    lightbox.addEventListener('touchstart', (e) => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    lightbox.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - touchStartX;
+      if (Math.abs(dx) > 50) showSlide(currentIndex + (dx < 0 ? 1 : -1));
+    });
+
+    /* =========================================
+       FORMULARZ KONTAKTOWY — fallback mailto
+       ========================================= */
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
-      const btn = e.target.querySelector('button');
-      btn.textContent = 'Wysłano!';
-      btn.disabled = true;
-      setTimeout(() => {
-        btn.textContent = 'Wyślij wiadomość';
-        btn.disabled = false;
-        e.target.reset();
-      }, 3000);
+      // honeypot — bot wypełni to pole, człowiek nie
+      if (form.elements.website.value) {
+        status.textContent = 'Coś poszło nie tak. Spróbuj ponownie.';
+        status.classList.add('form-status--error');
+        return;
+      }
+      if (!form.checkValidity()) {
+        status.textContent = 'Uzupełnij wszystkie pola poprawnie.';
+        status.classList.add('form-status--error');
+        return;
+      }
+      const name = form.elements.name.value.trim();
+      const email = form.elements.email.value.trim();
+      const message = form.elements.message.value.trim();
+      const subject = `Zapytanie z portfolio — ${name}`;
+      const body = `${message}\n\n—\n${name} (${email})`;
+      const mailto = `mailto:themiwelll@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+      status.classList.remove('form-status--error');
+      status.textContent = 'Otwieram Twojego klienta poczty… jeśli się nie otworzył, napisz bezpośrednio na themiwelll@gmail.com';
     });
 
-    // Active nav link on scroll
+    /* =========================================
+       AKTYWNY LINK W NAWIGACJI — IntersectionObserver
+       ========================================= */
     const sections = document.querySelectorAll('section[id]');
-    window.addEventListener('scroll', () => {
-      const pos = window.scrollY + 120;
-      sections.forEach(s => {
-        const top = s.offsetTop;
-        const bottom = top + s.offsetHeight;
-        const link = document.querySelector(`.nav__link[href="#${s.id}"]`);
-        if (link) link.classList.toggle('active', pos >= top && pos < bottom);
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          document.querySelectorAll('.nav__link').forEach(l => {
+            l.classList.toggle('active', l.getAttribute('href') === `#${id}`);
+          });
+        }
       });
-    });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    sections.forEach(s => navObserver.observe(s));
   </script>
 </body>
 </html>
